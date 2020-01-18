@@ -1,16 +1,20 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/fetcher");
 
 let repoSchema = mongoose.Schema({
-  // TODO: your schema here!
+  name: { type: String, default: "hahaha" },
+  age: { type: Number, min: 18, index: true },
+  bio: { type: String, match: /[a-z]/ },
+  date: { type: Date, default: Date.now },
+  buff: Buffer
 });
 
-let Repo = mongoose.model('Repo', repoSchema);
+let Repo = mongoose.model("Repo", repoSchema);
 
 let save = (/* TODO */) => {
   // TODO: Your code here
   // This function should save a repo or repos to
   // the MongoDB
-}
+};
 
 module.exports.save = save;
