@@ -1,8 +1,14 @@
 import React from "react";
 
-const RepoList = ({ props }) => (
+const RepoList = ({ repos }) => (
   <div>
-    <h4> Repo List Component </h4>
+    {repos.map(x => (
+      <ul>
+        <li>{x.name}</li>
+        <li>{x.url}</li>
+        <li>{x.fork_count}</li>
+      </ul>
+    ))}
   </div>
 );
 

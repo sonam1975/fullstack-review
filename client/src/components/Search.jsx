@@ -18,7 +18,18 @@ class Search extends React.Component {
   }
 
   search(e) {
-    this.props.onSearch(this.state.term);
+    e.preventDefault();
+    fetch("/repos", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json "
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(res => res.json())
+      .then(results => console.log(results));
+    // this.props.onSearch(this.state.term);
   }
 
   render() {

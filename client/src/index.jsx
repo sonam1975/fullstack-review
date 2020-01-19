@@ -16,24 +16,21 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/https://api.github.com/users/sonam1975/repos", {
+    fetch("/repos", {
       method: "GET",
-      Accept: "application/vnd.github.nebula-preview+json",
 
       "Content-type": "application/json"
     })
       .then(res => res.json())
       .then(
         result => {
+          console.log(result);
           this.setState({
             repos: result
           });
         },
-
         error => {
-          this.setState({
-            error
-          });
+          throw error;
         }
       );
   }
