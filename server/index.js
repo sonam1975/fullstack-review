@@ -3,6 +3,7 @@ const getReposByUsername = require("/Users/sonam/Desktop/Hack Reactor Programmin
 const bodyParser = require("body-parser");
 const save = require("../database/index.js");
 const find = require("../database/index.js");
+const compareValue = require("./sorting.js");
 let app = express();
 
 app.use(bodyParser.json());
@@ -29,7 +30,7 @@ app.get("/repos", function(req, res) {
     if (err) {
       throw err;
     }
-    res.send(result);
+    res.send(result.compareValue.compareValue("fork_count", "desc"));
   });
 });
 

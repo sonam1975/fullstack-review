@@ -24,7 +24,6 @@ class App extends React.Component {
       .then(res => res.json())
       .then(
         result => {
-          console.log(result);
           this.setState({
             repos: result
           });
@@ -42,8 +41,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>Github Fetcher</h1>
-        <RepoList repos={this.state.repos} />
         <Search onSearch={this.search} />
+        <RepoList repos={this.state.repos} />
       </div>
     );
   }

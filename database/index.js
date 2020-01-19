@@ -30,7 +30,7 @@ let save = repos => {
       if (err) {
         return console.error(err);
       }
-      console.log(documents + " saved to bookstore collection.");
+      console.log(documents + " saved to repos collection.");
     });
   });
 };

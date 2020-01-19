@@ -17,8 +17,8 @@ class Search extends React.Component {
     });
   }
 
-  search(e) {
-    e.preventDefault();
+  search(event) {
+    event.preventDefault();
     fetch("/repos", {
       method: "POST",
       headers: {
@@ -28,8 +28,24 @@ class Search extends React.Component {
       body: JSON.stringify(this.state)
     })
       .then(res => res.json())
-      .then(results => console.log(results));
-    // this.props.onSearch(this.state.term);
+      .then(
+        fetch("/repos", {
+          method: "GET",
+
+          "Content-type": "application/json"
+        })
+          .then(res => res.json())
+          .then(
+            result => {
+              this.setState({
+                repos: result
+              });
+            },
+            error => {
+              throw error;
+            }
+          )
+      );
   }
 
   render() {
